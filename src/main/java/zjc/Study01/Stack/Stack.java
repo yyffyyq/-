@@ -88,6 +88,19 @@ public class Stack<T> {
         top = -1;
     }
 
+    //出栈获取
+    public int popnum() {
+        if(isEmpty()){
+            System.out.println("栈空");
+            return 1;
+        }
+        array[top--] = null;
+        return top;
+    }
+    //
+    public int peek(){
+        return top;
+    }
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<Integer>();
         stack.push(1);

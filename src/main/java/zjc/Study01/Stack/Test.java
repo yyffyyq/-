@@ -8,29 +8,22 @@ import java.util.Arrays;
  */
 public class Test {
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
-        int[] temperatures = {30,60,90};
-        int[] answer= Arrays.copyOf(temperatures, temperatures.length);
-        // 初始最高温度
-        int sumtempare =0;
-        // 入栈
-        for(int i = 0; i < answer.length; i++){
-            sumtempare = temperatures[i];
-            for(int j = i; j < temperatures.length;j++){
-                if(sumtempare >= temperatures[j]){
-                    stack.push(temperatures[i]);
-                }else{
-                    answer[i] = stack.top()+1;
-                    stack.clearStack();
-                    break;
+        {
+            int[] temperatures = {73, 74, 75, 71, 69, 72, 76, 73};
+            int n = temperatures.length;
+            Stack<Integer> stack = new Stack<>();
+            int[] answer = new int[n];
+            for (int i = 0; i < n; i++) {
+                while(!stack.isEmpty()&&temperatures[i]>temperatures[stack.peek()]){
+                    int preIndex = stack.peek();
+                    stack.pop();
+                    answer[preIndex] = i - preIndex;
                 }
-                if(j==temperatures.length-1){
-                    answer[i] = 0;
-                }
+                stack.push(i);
             }
-        }
-        for(int i = 0; i < answer.length;i++){
-            System.out.print(answer[i]+",");
+            for (int i = 0; i < n; i++) {
+                System.out.print(answer[i] + " ,");
+            }
         }
     }
 }
