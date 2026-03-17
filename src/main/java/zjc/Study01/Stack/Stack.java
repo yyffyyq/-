@@ -75,6 +75,18 @@ public class Stack<T> {
             return false;
         }
     }
+    // 栈顶针
+    public int top(){
+        return top;
+    }
+    //查看栈顶值
+    public T checkTopData(){
+        return (T)array[top];
+    }
+    //请栈
+    public void clearStack(){
+        top = -1;
+    }
 
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<Integer>();
